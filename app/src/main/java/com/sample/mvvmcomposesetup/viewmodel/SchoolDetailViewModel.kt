@@ -34,7 +34,7 @@ class SchoolDetailViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            delay(200)
+            delay(2000)
             getSchoolDetails(_dbn.value)
         }
     }

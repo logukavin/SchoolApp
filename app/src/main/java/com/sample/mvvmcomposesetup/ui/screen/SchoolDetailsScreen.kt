@@ -6,11 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.typography
@@ -68,17 +70,18 @@ class SchoolDetailsScreen : ComponentActivity() {
                     is UIState.Success -> {
                         (dataState as UIState.Success).data
 
-
                         val data = (dataState as UIState.Success).data
 
-
-
-                        data.forEach {
+//                        data.forEach {
                             Column(
-
                                 modifier = Modifier
                                     .background(Color.White)
-                                    .fillMaxWidth()
+                                    .padding(
+                                        top = 60.dp, bottom = 8.dp, start = 9.dp, end = 9.dp
+                                    )
+                                    .fillMaxWidth(),
+                                verticalArrangement = Arrangement.spacedBy(10.dp),
+
 
                             ) {
 
@@ -90,7 +93,7 @@ class SchoolDetailsScreen : ComponentActivity() {
                                         .align(alignment = Alignment.CenterHorizontally)
                                 ) {
                                     Text(
-                                        text = it.school_name.toString(),
+                                        text = data[0].school_name.toString(),
                                         color = Color.Black,
                                         textAlign = TextAlign.Center,
                                         style = typography.labelSmall,
@@ -101,14 +104,14 @@ class SchoolDetailsScreen : ComponentActivity() {
                                 }
 
 
-                                Column(
+                                Row(
                                     modifier = Modifier
                                         .background(Color.White)
                                         .fillMaxWidth()
                                         .align(alignment = Alignment.CenterHorizontally)
                                 ) {
                                     Text(
-                                        text = it.sat_math_avg_score.toString(),
+                                        text = data[0].sat_math_avg_score,
                                         color = Color.Black,
                                         textAlign = TextAlign.Center,
                                         style = typography.labelSmall,
@@ -118,7 +121,7 @@ class SchoolDetailsScreen : ComponentActivity() {
                                     )
 
                                     Text(
-                                        text = it.sat_writing_avg_score.toString(),
+                                        text = data[0].sat_writing_avg_score.toString(),
                                         color = Color.Black,
                                         textAlign = TextAlign.Center,
                                         style = typography.labelSmall,
@@ -135,7 +138,7 @@ class SchoolDetailsScreen : ComponentActivity() {
                                         .align(alignment = Alignment.CenterHorizontally)
                                 ) {
                                     Text(
-                                        text = it.sat_critical_reading_avg_score.toString(),
+                                        text = data[0].sat_critical_reading_avg_score.toString(),
                                         color = Color.Black,
                                         textAlign = TextAlign.Center,
                                         style = typography.labelSmall,
@@ -145,7 +148,7 @@ class SchoolDetailsScreen : ComponentActivity() {
                                     )
                                 }
                             }
-                        }
+//                        }
 
                     }
                 }
